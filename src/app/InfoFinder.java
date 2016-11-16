@@ -17,7 +17,6 @@ public class InfoFinder {
 	 * Evo vam primjer kako procitati cijeli fajl liniju po liniju. Isto cete
 	 * koristiti u svojim metodama, samo cete taj fileName dobiti kao parametar
 	 * metode, a u metodama pisati svoju logiku da pronadjete to sto se trazi
-	 * 
 	 */
 	public static void main(String[] args) {
 		String fileName = "Files/the dead past.txt";
@@ -44,6 +43,11 @@ public class InfoFinder {
 	}
 
 	/**
+	 * 
+	 * Uzimam ovu metodu (kad niko drugi nece )
+	 * 
+	 * 
+	 * 
 	 * Metoda pronalazi i ispisuje broj recenica u fajlu
 	 * 
 	 * @param fileName
@@ -104,7 +108,8 @@ public class InfoFinder {
 
 		// ispis ponavljanja slova
 		for (int i = 0; i < lettersCount.length; i++) {
-			System.out.println("Slovo " + (char) (asciiOfLetterA + i) + " se ponavlja " + lettersCount[i] + " puta");
+			System.out.println("Slovo " + (char) (asciiOfLetterA + i)
+					+ " se ponavlja " + lettersCount[i] + " puta");
 		}
 	}
 
@@ -126,7 +131,7 @@ public class InfoFinder {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		
+
 		System.out.println("Broj jedinstvenih rijeci: " + words.size());
 	}
 
