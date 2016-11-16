@@ -19,7 +19,7 @@ public class InfoFinder {
 	public static void main(String[] args) {
 		String fileName = "Files/the dead past.txt";
 		String line;
-		
+
 		try (BufferedReader read = Files.newBufferedReader(Paths.get(fileName))) {
 			while ((line = read.readLine()) != null) {
 				System.out.println(line);
@@ -77,7 +77,32 @@ public class InfoFinder {
 	 *            ime fajla
 	 */
 	public static void countLettersOccurrences(String fileName) {
+		// niz koji ce brojati slova (slovo A je na indeksu 0, B na indeksu
+		// 1...)
+		int[] lettersCount = new int[26];
+		// slovo A je 65 u ASCII kodu
+		int asciiOfLetterA = 65;
+		String line;
 
+		try (BufferedReader read = Files.newBufferedReader(Paths.get(fileName))) {
+			while ((line = read.readLine()) != null) {
+				for (int i = 0; i < line.length(); i++) {
+					char ch = Character.toUpperCase(line.charAt(i));
+					if (Character.isLetter(ch)) {
+						// povecaj brojac na indeksu brojcane reprezentacije
+						// trenutnog slova - slovo A
+						lettersCount[(int) ch - asciiOfLetterA]++;
+					}
+				}
+			}
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+
+		// ispis ponavljanja slova
+		for (int i = 0; i < lettersCount.length; i++) {
+			System.out.println("Slovo " + (char) (asciiOfLetterA + i) + " se ponavlja " + lettersCount[i] + " puta");
+		}
 	}
 
 	/**
