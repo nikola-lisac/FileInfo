@@ -4,8 +4,10 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Scanner;
 import java.util.Set;
 
@@ -13,22 +15,17 @@ public class InfoFinder {
 
 	private static Scanner input = new Scanner(System.in);
 
-	/*
-	 * Evo vam primjer kako procitati cijeli fajl liniju po liniju. Isto cete
-	 * koristiti u svojim metodama, samo cete taj fileName dobiti kao parametar
-	 * metode, a u metodama pisati svoju logiku da pronadjete to sto se trazi
-	 */
 	public static void main(String[] args) {
-		String fileName = "Files/the dead past.txt";
-		String line;
-
-		try (BufferedReader read = Files.newBufferedReader(Paths.get(fileName))) {
-			while ((line = read.readLine()) != null) {
-				System.out.println(line);
-			}
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+		System.out.println("Unesite path do fajla: ");
+		String fileName = input.nextLine();
+		System.out.println("Detalji unesenog fajla: ");
+		System.out.println("------------------------");
+		countWords(fileName);
+		countUniqueWords(fileName);
+		countSentences(fileName);
+		countLetters(fileName);
+		countChars(fileName);
+		countLettersOccurrences(fileName);
 
 	}
 
@@ -39,26 +36,19 @@ public class InfoFinder {
 	 *            ime fajla
 	 */
 	public static void countWords(String fileName) {
-
-		int count = 0;// brojac rijeci
+		List<String> words = new ArrayList<>();
 
 		String line;
 		try (BufferedReader read = Files.newBufferedReader(Paths.get(fileName))) {
 			while ((line = read.readLine()) != null) {
-				System.out.println(line);
+				line = line.replaceAll("[^a-zA-Z]", " ");
+				words.addAll(Arrays.asList(line.trim().split("\\s+")));
 
-				String[] parts = line.split(" "); // niz uzima space
-
-				for (String w : parts) {// Poslije spacea uzima rijec, space
-										// racuna kao rijec
-
-					count++;
-				}
 			}
-			System.out.println("U fajlu se nalazi " + count + " rijeci");
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+		System.out.println("Broj rijeci u fajlu: " + words.size());
 	}
 
 	/**
@@ -68,17 +58,17 @@ public class InfoFinder {
 	 *            imeFajla
 	 */
 	public static void countSentences(String fileName) {
-		int count = 0;
-
+		StringBuffer sf = new StringBuffer();
 		String line;
 		try (BufferedReader read = Files.newBufferedReader(Paths.get(fileName))) {
 			while ((line = read.readLine()) != null) {
-				count++;
+				sf.append(line);
 			}
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		System.out.println("U fajlu se nalazi " + count + " recenica");
+		int count = sf.toString().split("[?!.]").length;
+		System.out.println("Broj recenica u fajlu: " + count);
 
 	}
 
