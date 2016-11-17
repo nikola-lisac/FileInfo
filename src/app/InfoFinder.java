@@ -100,7 +100,17 @@ public class InfoFinder {
 	 *            ime fajla
 	 */
 	public static void countChars(String fileName) {
+		long counter = 0;
+		String line;
+		try (BufferedReader read = Files.newBufferedReader(Paths.get(fileName))) {
+			while ((line = read.readLine()) != null) {
+				counter += line.length();
+			}
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 
+		System.out.println("Broj karaktera u fajlu: " + counter);
 	}
 
 	/**
@@ -134,8 +144,7 @@ public class InfoFinder {
 
 		// ispis ponavljanja slova
 		for (int i = 0; i < lettersCount.length; i++) {
-			System.out.println("Slovo " + (char) (asciiOfLetterA + i)
-					+ " se ponavlja " + lettersCount[i] + " puta");
+			System.out.println("Slovo " + (char) (asciiOfLetterA + i) + " se ponavlja " + lettersCount[i] + " puta");
 		}
 	}
 
