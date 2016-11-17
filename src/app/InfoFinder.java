@@ -29,6 +29,7 @@ public class InfoFinder {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+		countSentences(fileName);
 
 	}
 
@@ -43,26 +44,43 @@ public class InfoFinder {
 	}
 
 	/**
-	 * 
-	 * Uzimam ovu metodu (kad niko drugi nece )
-	 * 
-	 * 
-	 * 
 	 * Metoda pronalazi i ispisuje broj recenica u fajlu
 	 * 
 	 * @param fileName
 	 *            imeFajla
 	 */
 	public static void countSentences(String fileName) {
+		int count = 0;
 
+		String line;
+		try (BufferedReader read = Files.newBufferedReader(Paths.get(fileName))) {
+			while ((line = read.readLine()) != null) {
+				count++;
+				System.out.println(line);
+			}
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		System.out.println("U fajlu se nalazi " + count + " recenica");
+
+			
+			
+			
+			
+			
+			
+
+		/**
+		 * Metoda pronalazi i ispisuje broj slova u fajlu
+		 * 
+		 * @param fileName
+		 *            imeFajla
+		 */
+
+
+		
 	}
 
-	/**
-	 * Metoda pronalazi i ispisuje broj slova u fajlu
-	 * 
-	 * @param fileName
-	 *            imeFajla
-	 */
 	public static void countLetters(String fileName) {
 
 	}
