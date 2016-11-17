@@ -29,7 +29,6 @@ public class InfoFinder {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		countSentences(fileName);
 
 	}
 
@@ -40,7 +39,22 @@ public class InfoFinder {
 	 *            ime fajla
 	 */
 	public static void countWords(String fileName) {
+		int count = 0;// brojac rijeci
+		String line;
+		try (BufferedReader read = Files.newBufferedReader(Paths.get(fileName))) {
+			while ((line = read.readLine()) != null) {
+				System.out.println(line);
+				String[] parts = line.split(" "); // niz uzima space
 
+				for (String w : parts) {// Poslije spacea uzima rijec, space
+										// racuna kao rijec
+					count++;
+				}
+			}
+			System.out.println("U fajlu se nalazi " + count + " rijeci");
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 
 	/**
@@ -63,22 +77,13 @@ public class InfoFinder {
 		}
 		System.out.println("U fajlu se nalazi " + count + " recenica");
 
-			
-			
-			
-			
-			
-			
-
 		/**
+		 * 
 		 * Metoda pronalazi i ispisuje broj slova u fajlu
 		 * 
 		 * @param fileName
 		 *            imeFajla
 		 */
-
-
-		
 	}
 
 	public static void countLetters(String fileName) {
