@@ -74,7 +74,6 @@ public class InfoFinder {
 		try (BufferedReader read = Files.newBufferedReader(Paths.get(fileName))) {
 			while ((line = read.readLine()) != null) {
 				count++;
-				System.out.println(line);
 			}
 		} catch (IOException e) {
 			e.printStackTrace();
