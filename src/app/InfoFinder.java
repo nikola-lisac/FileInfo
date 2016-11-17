@@ -46,7 +46,8 @@ public class InfoFinder {
 				System.out.println(line);
 				String[] parts = line.split(" "); // niz uzima space
 
-				for (String w : parts) {// Poslije svakog spacea jedna rijec
+				for (String w : parts) {// Poslije spacea uzima rijec, space
+										// racuna kao rijec
 					count++;
 				}
 			}
