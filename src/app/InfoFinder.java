@@ -8,25 +8,22 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
-import java.util.Scanner;
 import java.util.Set;
 
 public class InfoFinder {
 
-	private static Scanner input = new Scanner(System.in);
+	private String fileName;
 
-	public static void main(String[] args) {
-		System.out.println("Unesite path do fajla: ");
-		String fileName = input.nextLine();
-		System.out.println("Detalji unesenog fajla: ");
-		System.out.println("------------------------");
-		countWords(fileName);
-		countUniqueWords(fileName);
-		countSentences(fileName);
-		countLetters(fileName);
-		countChars(fileName);
-		countLettersOccurrences(fileName);
+	public InfoFinder(String fileName) {
+		this.fileName = fileName;
+	}
 
+	public String getFileName() {
+		return fileName;
+	}
+
+	public void setFileName(String fileName) {
+		this.fileName = fileName;
 	}
 
 	/**
@@ -35,7 +32,7 @@ public class InfoFinder {
 	 * @param fileName
 	 *            ime fajla
 	 */
-	public static void countWords(String fileName) {
+	public void countWords() {
 		List<String> words = new ArrayList<>();
 
 		String line;
@@ -57,7 +54,7 @@ public class InfoFinder {
 	 * @param fileName
 	 *            imeFajla
 	 */
-	public static void countSentences(String fileName) {
+	public void countSentences() {
 		StringBuffer sf = new StringBuffer();
 		String line;
 		try (BufferedReader read = Files.newBufferedReader(Paths.get(fileName))) {
@@ -79,7 +76,7 @@ public class InfoFinder {
 	 * @param fileName
 	 *            imeFajla
 	 */
-	public static void countLetters(String fileName) {
+	public void countLetters() {
 		long counter = 0;
 		String line;
 		try (BufferedReader read = Files.newBufferedReader(Paths.get(fileName))) {
@@ -103,7 +100,7 @@ public class InfoFinder {
 	 * @param fileName
 	 *            ime fajla
 	 */
-	public static void countChars(String fileName) {
+	public void countChars() {
 		long counter = 0;
 		String line;
 		try (BufferedReader read = Files.newBufferedReader(Paths.get(fileName))) {
@@ -123,7 +120,7 @@ public class InfoFinder {
 	 * @param fileName
 	 *            ime fajla
 	 */
-	public static void countLettersOccurrences(String fileName) {
+	public void countLettersOccurrences() {
 		// niz koji ce brojati slova (slovo A je na indeksu 0, B na indeksu
 		// 1...)
 		int[] lettersCount = new int[26];
@@ -158,7 +155,7 @@ public class InfoFinder {
 	 * @param fileName
 	 *            imeFajla
 	 */
-	public static void countUniqueWords(String fileName) {
+	public void countUniqueWords() {
 		Set<String> words = new HashSet<>();
 		String line;
 
