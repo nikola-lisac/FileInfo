@@ -56,19 +56,11 @@ public class InfoFinder {
 		try (BufferedReader read = Files.newBufferedReader(Paths.get(fileName))) {
 			while ((line = read.readLine()) != null) {
 				count++;
-				System.out.println(line);
 			}
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
 		System.out.println("U fajlu se nalazi " + count + " recenica");
-
-			
-			
-			
-			
-			
-			
 
 		/**
 		 * Metoda pronalazi i ispisuje broj slova u fajlu
@@ -76,9 +68,6 @@ public class InfoFinder {
 		 * @param fileName
 		 *            imeFajla
 		 */
-
-
-		
 	}
 
 	public static void countLetters(String fileName) {
