@@ -4,10 +4,8 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 public class InfoFinder {
@@ -33,19 +31,18 @@ public class InfoFinder {
 	 *            ime fajla
 	 */
 	public void countWords() {
-		List<String> words = new ArrayList<>();
-
+		long count = 0;
 		String line;
 		try (BufferedReader read = Files.newBufferedReader(Paths.get(fileName))) {
 			while ((line = read.readLine()) != null) {
 				line = line.replaceAll("[^a-zA-Z]", " ");
-				words.addAll(Arrays.asList(line.trim().split("\\s+")));
+				count += line.trim().split("\\s+").length;
 
 			}
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		System.out.println("Broj rijeci u fajlu: " + words.size());
+		System.out.println("Broj rijeci u fajlu: " + count);
 	}
 
 	/**
